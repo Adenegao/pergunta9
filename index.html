@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #pergunta {
+      font-size: 20px;
+      margin: 20px 0;
+    }
+
+    #alternativas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #mensagem {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+  <title>Jogo de Perguntas</title>
+</head>
+<body>
+
+  <div id="pergunta">Como a presença dos norte-americanos em Natal influenciou as relações entre Brasil e Estados Unidos após a Segunda Guerra Mundial?</div>
+  <div id="alternativas">
+    <button onclick="verificarResposta('A')" id="btnA">A) Fortalecimento das relações diplomáticas   </button>
+    <button onclick="verificarResposta('B')" id="btnB">B) Conflitos e tensões  </button>
+    <button onclick="verificarResposta('C')" id="btnC">C) Neutralidade diplomática  </button>
+  </div>
+  <div id="mensagem"></div>
+
+  <script>
+    var jogoAtivo = true;
+
+    function verificarResposta(resposta) {
+      if (!jogoAtivo) {
+        return;
+      }
+
+      var mensagem = document.getElementById('mensagem');
+      var btnA = document.getElementById('btnA');
+      var btnB = document.getElementById('btnB');
+      var btnC = document.getElementById('btnC');
+
+      jogoAtivo = false; // Desativa o jogo após a primeira jogada
+
+      if (resposta === 'A') {
+        mensagem.textContent = 'Você acertou! Pode avançar duas casas.';
+        // Lógica para avançar duas casas aqui
+      } else {
+        mensagem.textContent = 'Você errou! Volte cinco casas. A correta é letra A';
+        // Lógica para voltar duas casas aqui
+      }
+
+      // Desativa os botões após a jogada
+      btnA.disabled = true;
+      btnB.disabled = true;
+      btnC.disabled = true;
+    }
+  </script>
+</body>
+</html>
